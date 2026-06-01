@@ -3,247 +3,642 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio de Dados</title>
+    <title>Portfólio de Dados | Darlan Monteiro</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
+      
+        :root {
+            --bg-color: #020617;        
+            --text-main: #ffffff;       
+            --text-muted: #94a3b8;      
+            --card-bg: #0f172a;         
+            --card-border: rgba(255, 255, 255, 0.05);
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --accent-color: #3b82f6;    
+            --accent-hover: #2563eb;
+            --tag-bg: #1e293b;
+            --tag-text: #38bdf8;
+            --transition-speed: 0.3s;
+        }
+
+     
+        body.light-mode {
+            --bg-color: #f4f5f7;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --card-bg: #ffffff;
+            --card-border: rgba(0, 0, 0, 0.05);
+            --card-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            --tag-bg: #e2e8f0;
+            --tag-text: #334155;
+        }
+
+       
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background-color: #f3f2f1; 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg-color); 
+            color: var(--text-main);
             margin: 0; 
-            padding: 20px; 
-            color: #333;
+            padding: 0; 
+            transition: background-color var(--transition-speed), color var(--transition-speed);
         }
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            background-color: #252423;
-            color: white;
+
+        
+        .main-header {
+        
+            background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
+            color: #ffffff; 
+            position: relative;
+            padding-bottom: 80px; 
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: transparent; 
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .nav-brand-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
             border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+
+        .nav-brand-text {
+            color: #ffffff;
+            font-size: 1.4em;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 35px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: #cbd5e1;
+            font-size: 0.95em;
+            font-weight: 500;
+            transition: color var(--transition-speed);
+        }
+
+        .nav-links li a:hover, 
+        .nav-links li a.active {
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.85em;
+            transition: all var(--transition-speed);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-contact {
+            background-color: transparent;
+            border: 1px solid #ffffff;
+            color: white;
+            text-decoration: none;
+            padding: 9px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: all var(--transition-speed);
+        }
+
+        .btn-contact:hover {
+            background-color: #ffffff;
+            color: #0f172a;
+        }
+
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px 40px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 55%;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5em; 
+            margin-top: 0;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            color: #ffffff;
+        }
+
+        .hero-content p {
+            font-size: 1.15em;
+            color: #94a3b8;
             margin-bottom: 40px;
+            line-height: 1.6;
         }
-        h1 { margin: 0; font-size: 2.5em; }
-        p.subtitle { color: #eaeaea; font-size: 1.2em; margin-top: 10px; }
-        
-        .container { 
+
+        .btn-hero {
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.05em;
+            transition: background-color var(--transition-speed);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-hero:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            max-height: 280px;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.4));
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.03);
+        }
+
+      
+        .feature-bar-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            transform: translateY(50%); 
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+
+        .feature-bar {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #ffffff;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2em;
+        }
+
+        .feature-text h4 {
+            margin: 0;
+            font-size: 0.95em;
+            font-weight: 600;
+        }
+
+        .feature-text p {
+            margin: 3px 0 0 0;
+            font-size: 0.8em;
+            color: #94a3b8;
+        }
+
+    
+        .feature-item:not(:last-child)::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-left: 30px;
+        }
+
+
+       
+        .content-container { 
             max-width: 1200px; 
-            margin: 0 auto; 
+            margin: 80px auto 0 auto; 
+            padding: 60px 20px;
         }
-        
+
         .project-card { 
-            background: white; 
-            padding: 25px; 
-            margin-bottom: 50px; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+            background: var(--card-bg); 
+            padding: 40px; 
+            margin-bottom: 40px; 
+            border-radius: 16px; 
+            border: 1px solid var(--card-border);
+            box-shadow: var(--card-shadow); 
+            transition: transform 0.2s, background-color var(--transition-speed), border var(--transition-speed);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
         }
         
         .project-title {
-            color: #d8ad28;
-            border-left: 5px solid #d8ad28;
-            padding-left: 15px;
+            color: var(--text-main);
+            font-size: 1.8em;
             margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-title::before {
+            content: "";
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+        }
+
+        .project-card > p:not(.tech-tags) {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 1.05em;
+            margin-bottom: 25px;
+        }
+
+        .tech-tags {
+            margin-bottom: 20px;
         }
 
         .tech-tag {
-            background-color: #e1dfdd;
-            padding: 4px 8px;
-            border-radius: 4px;
+            background-color: var(--tag-bg);
+            padding: 6px 12px;
+            border-radius: 6px;
             font-size: 0.85em;
-            font-weight: bold;
-            color: #605e5c;
-            margin-right: 5px;
+            font-weight: 600;
+            color: var(--tag-text);
+            margin-right: 8px;
+            margin-bottom: 8px;
             display: inline-block;
-            margin-bottom: 5px;
+            transition: all var(--transition-speed);
         }
 
         iframe { 
             width: 100%; 
-            height: 600px; 
+            height: 650px; 
             border: none; 
-            margin-top: 20px;
-            border-radius: 4px;
+            border-radius: 12px;
+            background-color: #1e293b; 
+        }
+
+
+        @media (max-width: 992px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px 80px 20px;
+            }
+            .hero-content {
+                max-width: 100%;
+            }
+            .hero-content h1 {
+                font-size: 2.8em;
+            }
+            .hero-image {
+                margin-top: 40px;
+                justify-content: center;
+            }
+            .feature-bar {
+                flex-direction: column;
+                border-radius: 24px;
+                gap: 20px;
+                padding: 30px;
+            }
+            .feature-item:not(:last-child)::after {
+                display: none;
+            }
+            .content-container {
+                margin-top: 150px;
+            }
         }
 
         @media (max-width: 768px) {
-            iframe { height: 400px; }
-            h1 { font-size: 1.8em; }
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            iframe { height: 450px; }
+            .project-card { padding: 25px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+
+    <header class="main-header">
         
-        <header>
-            <h1>Portfólio de Business Intelligence</h1>
-            <p class="subtitle">Dashboards interativos desenvolvidos com Power BI e Python</p>
-            <p class="subtitle">Desenvolvido por Darlan Monteiro</p>
-        </header>
+      
+        <nav class="navbar">
+            <a href="#" class="nav-brand">
+                <div class="nav-brand-icon">DM</div>
+                <span class="nav-brand-text">Darlan Monteiro</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#" class="active">Power BI</a></li>
+                <li><a href="#">Tableau</a></li>
+                <li><a href="#">Looker</a></li>
+                <li><a href="#">Excel</a></li>
+                <li><a href="#">Python</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="btn-toggle" onclick="toggleTheme()">☀️ Modo Claro</button>
+                <a href="https://www.linkedin.com/in/darlan-santos-01a87b185/" target="_blank" class="btn-contact">Contato</a>
+            </div>
+        </nav>
+
+     
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Projetado para transformar dados hoje e amanhã</h1>
+                <p>Nesta página, você encontra meus projetos práticos desenvolvidos em Power BI. O objetivo é demonstrar a extração, modelagem e visualização de dados complexos para gerar insights precisos e apoiar a tomada de decisão estratégica dos negócios.</p>
+                <p>Explore os dashboards e descubra como a análise de dados pode impulsionar resultados reais.</p>
+                <a href="#projetos" class="btn-hero">
+                    Explorar Dashboards &rarr;
+                </a>
+            </div>
+            <div class="hero-image">
+                <!-- imagem do Power BI -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Logo Power BI">
+            </div>
+        </div>
+
+        <!-- Barra Flutuante -->
+        <div class="feature-bar-wrapper">
+            <div class="feature-bar">
+                <div class="feature-item">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-text">
+                        <h4>Modelagem de Dados</h4>
+                        <p>Star Schema & DAX</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⚙️</div>
+                    <div class="feature-text">
+                        <h4>ETL Automatizado</h4>
+                        <p>Power Query & Scripts</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">💡</div>
+                    <div class="feature-text">
+                        <h4>Insights Estratégicos</h4>
+                        <p>Apoio à Decisão</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎨</div>
+                    <div class="feature-text">
+                        <h4>Design & UI/UX</h4>
+                        <p>Telas Interativas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
 
 
+    <main class="content-container" id="projetos">
         
-        <!-- Análise Financeira: Fluxo de Caixa Corporativo -->
+        <!-- 1. Análise Financeira: Fluxo de Caixa Corporativo -->
         <div class="project-card">
             <h2 class="project-title">Análise Financeira: Fluxo de Caixa Corporativo</h2>
-            <p>
+            <div class="tech-tags">
                 <span class="tech-tag">Power BI</span>
                 <span class="tech-tag">DAX (Parâmetros de Campo)</span>
                 <span class="tech-tag">Modelagem Financeira</span>
-                <span class="tech-tag">UI/UX (Dark Mode)</span>
-            </p>
+                <span class="tech-tag">UI/UX</span>
+            </div>
             <p>Painel executivo focado no controle de Fluxo de Caixa e monitoramento da saúde financeira do negócio. A modelagem classifica e consolida transações de Recebimentos e Pagamentos para apurar o Saldo Líquido real da operação ao longo do tempo. O projeto inclui o uso avançado de DAX com Parâmetros de Campo (Field Parameters), garantindo interatividade dinâmica para a diretoria cruzar dados bancários e formas de pagamento em um único visual, apoiando a tomada de decisão estratégica.</p>
-            
             <iframe title="Análise Financeira: 2020 - 2021" src="https://app.powerbi.com/view?r=eyJrIjoiYjhiMjI1YzQtYjY3Yi00MzEwLTlhNzMtNjJlMTQ5YTJlZjVjIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
         </div>
 
-
-        
-        <!-- Performance Comercial: Varejo de Chocolates -->
+        <!-- 2. Performance Comercial: Varejo de Chocolates -->
         <div class="project-card">
             <h2 class="project-title">Performance Comercial: Varejo de Chocolates</h2>
-            <p>
+            <div class="tech-tags">
                 <span class="tech-tag">Power BI</span>
                 <span class="tech-tag">Power Query (Delimitadores)</span>
                 <span class="tech-tag">DAX</span>
                 <span class="tech-tag">Figma (UI/UX)</span>
-            </p>
+            </div>
             <p>Painel executivo focado na análise do mix de produtos e volume de vendas. A modelagem cruza o faturamento bruto com a quantidade física de caixas enviadas para apurar o Ticket Médio real da operação. O projeto inclui extração e limpeza de dados via delimitadores de texto, além de um ranking de performance individual da equipe comercial para apoiar a tomada de decisão estratégica.</p>
-            
             <iframe title="Performance Comercial: Varejo de Chocolates" src="https://app.powerbi.com/view?r=eyJrIjoiZGQzMWE4Y2EtYWQ4MC00ZjMwLWJiNzUtYjBhYzE1MzFjMDUwIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
         </div>
 
-        
-        <!-- Performance Analytics: O Esquadrão Brasileiro -->
+        <!-- 3. Performance Analytics: O Esquadrão Brasileiro -->
         <div class="project-card">
             <h2 class="project-title">Performance Analytics: O Esquadrão Brasileiro</h2>
-            <p>
+            <div class="tech-tags">
                 <span class="tech-tag">Power BI</span>
                 <span class="tech-tag">Python (Web Scraping & Pandas)</span>
                 <span class="tech-tag">Engenharia de Dados</span>
                 <span class="tech-tag">Figma (UI/UX)</span>
-            </p>
+            </div>
             <p>Painel de Scout de Elite focado no monitoramento tático dos 55 atletas da pré-lista da Seleção. Utiliza um pipeline automatizado em Python para extrair estatísticas do FBref, estruturando os dados para análise de métricas avançadas por 90 minutos (P90), disponibilidade física e entrega ofensiva do plantel definitivo.</p>
-            
             <iframe title="Performance Analytics: Seleção Brasileira" src="https://app.powerbi.com/view?r=eyJrIjoiNmJiYjEzZjAtNmE2ZS00Njk0LWFhNGYtN2VhYzVkODUwZGYwIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
         </div>
 
-        
-         <!-- Analytics Executivo: Vendas & CRM -->
+        <!-- 4. Analytics Executivo: Vendas & CRM -->
         <div class="project-card">
             <h2 class="project-title">Analytics Executivo: Vendas & CRM (Mobilidade)</h2>
-            <p>
+            <div class="tech-tags">
                 <span class="tech-tag">Power BI</span>
                 <span class="tech-tag">ETL & Star Schema</span>
                 <span class="tech-tag">DAX Avançado</span>
                 <span class="tech-tag">Figma (UI/UX)</span>
-            </p>
+            </div>
             <p>Projeto focado em entender o comportamento de compra de passageiros, digitalização de canais e o retorno financeiro de campanhas. A modelagem cruzou vendas e cupons para o cálculo da Receita Líquida Real, gerando insights estratégicos sobre permissão de contato (Opt-in) no WhatsApp e migração de clientes do balcão para o aplicativo.</p>
-            
             <iframe title="Dashboard de Vendas e CRM" src="https://app.powerbi.com/view?r=eyJrIjoiNmYzNmFjMDUtMmE1ZC00NjliLWExNzUtZmQ0NDBjMDJkYzJhIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
         </div>
 
-
-        <!-- O Dossiê do Penta: A História do Brasil nas Copas -->
+        <!-- 5. O Dossiê do Penta -->
         <div class="project-card">
             <h2 class="project-title">O Dossiê do Penta: A História do Brasil nas Copas</h2>
-            <p>
+            <div class="tech-tags">
                 <span class="tech-tag">Power BI</span>
                 <span class="tech-tag">Python (ETL & Pandas)</span>
                 <span class="tech-tag">Figma (UI/UX Design)</span>
-            </p>
+            </div>
             <p>Análise tática e histórica das 5 campanhas campeãs mundiais da Seleção Brasileira (1958, 1962, 1970, 1994 e 2002), com extração, limpeza e modelagem de dados automatizadas via scripts em Python.</p>
-            
             <iframe title="O Dossiê do Penta" src="https://app.powerbi.com/view?r=eyJrIjoiOTEzNTkwNmMtNGVjZC00YmNjLTkwMjAtMjhiMzZiNDY2Y2RiIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
         </div>
 
-
-        <!-- Analytics Esportivo: Brasileirão 2025 (Flamengo) -->
+        <!-- 6. Analytics Esportivo: Brasileirão 2025 -->
         <div class="project-card">
             <h2 class="project-title">Analytics Esportivo: Brasileirão 2025 (Flamengo)</h2>
-            <p>
+            <div class="tech-tags">
                 <span class="tech-tag">Power BI</span>
                 <span class="tech-tag">Python (Web Scraping)</span>
                 <span class="tech-tag">HTML/CSS (Visual Personalizado)</span>
-            </p>
+            </div>
             <p>Monitoramento de performance da equipe, utilizando Python para coleta de dados e Power BI para visualização tática e estatística.</p>
-            
             <iframe title="Brasilierão 2025" src="https://app.powerbi.com/view?r=eyJrIjoiNmMwZWE2YzMtYTE0OS00ZjAxLThkY2ItM2YxYTJjODM1YjIxIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
         </div>
 
-
-        <!-- Case Técnico: Análise de Clientes -->
+        <!-- 7. Case Técnico: Análise de Clientes -->
         <div class="project-card">
             <h2 class="project-title">Case Técnico: Análise de Clientes</h2>
-            <p>
+            <div class="tech-tags">
                 <span class="tech-tag">Power BI</span>
                 <span class="tech-tag">ETL & Modelagem</span>
                 <span class="tech-tag">Análise Financeira</span>
-            </p>
+            </div>
             <p>Dashboard focado em segmentação de clientes e análise de volume transacional para tomada de decisão estratégica.</p>
-            
             <iframe title="Desempenho dos Grupos de Clientes" src="https://app.powerbi.com/view?r=eyJrIjoiNmI5MjA1MDYtNjQ2NS00Y2JjLWFlZDgtOTgwODhmNTIyMTA4IiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
         </div>
 
-
-        <!-- O Brasileirão na ótica dos dados (2007 a 2019 -->
+        <!-- 8. O Brasileirão (2007 a 2019) -->
         <div class="project-card">
             <h2 class="project-title">O Brasileirão na ótica dos dados (2007 a 2019)</h2>
-            <p>
+            <div class="tech-tags">
                 <span class="tech-tag">Power BI</span>
                 <span class="tech-tag">ETL & Modelagem</span>
                 <span class="tech-tag">HTML/CSS/Figma (Visual Personalizado)</span>
-            </p>
+            </div>
             <p>Dashboard focado em análise de desempenho dos times e estatísticas do campeonato brasileiro entre 2007 e 2019.</p>
-            
             <iframe title="BRASILEIRÃO (2007 a 2019)" src="https://app.powerbi.com/view?r=eyJrIjoiZWUwZWE1YzctMmM5OS00YjNjLWI2NjUtNmQyMjI0M2YyYzEzIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
         </div>
 
-
-         <!-- F1 - Fórmula 1 2021 A 2024 -->
+        <!-- 9. F1 - Fórmula 1 2021 A 2024 -->
         <div class="project-card">
             <h2 class="project-title">F1 - Fórmula 1 2021 A 2024</h2>
-            <p>
+            <div class="tech-tags">
                 <span class="tech-tag">Power BI</span>
                 <span class="tech-tag">ETL & Modelagem</span>
                 <span class="tech-tag">HTML/CSS/Figma (Visual Personalizado)</span>
-            </p>
+            </div>
             <p>Dashboard focado em análise das estatísticas e desempenho dos pilotos e equipes da Fórmula 1 entre 2021 e 2024.</p>
-            
             <iframe title="F1 - Fórmula 1 2021 A 2024" src="https://app.powerbi.com/view?r=eyJrIjoiOTdmYzEzZGItOGQwZC00MWFlLThmY2ItNjRmM2RlNmM0ZTRlIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
         </div>
 
-
-        <!-- Vendas de Eletrônicos -->
+        <!-- 10. Vendas de Eletrônicos -->
         <div class="project-card">
             <h2 class="project-title">Vendas de Eletrônicos</h2>
-            <p>
+            <div class="tech-tags">
                 <span class="tech-tag">Power BI</span>
                 <span class="tech-tag">ETL & Modelagem</span>
                 <span class="tech-tag">HTML/CSS/Figma (Visual Personalizado)</span>
-            </p>
+            </div>
             <p>Dashboard focado em análise das vendas de eletrônicos.</p>
-            
             <iframe title="Vendas de Eletrônicos" src="https://app.powerbi.com/view?r=eyJrIjoiM2JjMWY3YTUtYjI5OC00YTkxLWJjZTUtYTJhM2M0NTkxYmE0IiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
         </div>
 
-
-         <!-- Dashboard de Vendas -->
+        <!-- 11. Dashboard de Vendas -->
         <div class="project-card">
             <h2 class="project-title">Dashboard de Vendas</h2>
-            <p>
+            <div class="tech-tags">
                 <span class="tech-tag">Power BI</span>
                 <span class="tech-tag">ETL & Modelagem</span>
                 <span class="tech-tag">HTML/CSS/Figma (Visual Personalizado)</span>
-            </p>
+            </div>
             <p>Dashboard focado em análise geral das vendas.</p>
-            
             <iframe title="Dashboard de Vendas" src="https://app.powerbi.com/view?r=eyJrIjoiN2U3OTQ3YTAtNmY5My00ZTFkLWJjZTEtOWE0OWZmYzNjNTU2IiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
         </div>
  
-        <footer style="text-align: center; margin-top: 50px; color: #666;">
+        <footer style="text-align: center; margin-top: 50px; color: var(--text-muted); padding-bottom: 30px;">
             <p>&copy; 2026 - Todos os direitos reservados</p>
+            <p>Desenvolvido por: Darlan Monteiro</p>
         </footer>
 
-    </div>
+    </main>
 
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            
+            const btn = document.getElementById('btn-toggle');
+            if (document.body.classList.contains('light-mode')) {
+                btn.innerHTML = '🌙 Modo Escuro';
+            } else {
+                btn.innerHTML = '☀️ Modo Claro';
+            }
+        }
+    </script>
 </body>
 </html>
+
