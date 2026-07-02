@@ -4,62 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio de Dados | Darlan Monteiro</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
     <style>
-      
         :root {
-            --bg-color: #020617;        
-            --text-main: #ffffff;       
-            --text-muted: #94a3b8;      
-            --card-bg: #0f172a;         
-            --card-border: rgba(255, 255, 255, 0.05);
-            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            --accent-color: #3b82f6;    
-            --accent-hover: #2563eb;
-            --tag-bg: #1e293b;
-            --tag-text: #38bdf8;
-            --transition-speed: 0.3s;
+            --paper: #f5f3ee;
+            --paper-alt: #ffffff;
+            --ink: #12181f;
+            --ink-muted: #5c6472;
+            --line: #dcd7c9;
+            --gold: #c98a2b;
+            --gold-soft: #f1e3c6;
+            --teal: #1d6c74;
+            --teal-soft: #dbeae9;
+            --radius: 10px;
+            --shadow: 0 1px 2px rgba(18,24,31,0.04), 0 8px 24px rgba(18,24,31,0.06);
         }
 
-     
-        body.light-mode {
-            --bg-color: #f4f5f7;
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            --card-bg: #ffffff;
-            --card-border: rgba(0, 0, 0, 0.05);
-            --card-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-            --tag-bg: #e2e8f0;
-            --tag-text: #334155;
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            color: var(--ink);
+            background-color: var(--paper);
+            background-image:
+                linear-gradient(var(--line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--line) 1px, transparent 1px);
+            background-size: 34px 34px;
+            background-position: -1px -1px;
         }
 
-       
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: var(--bg-color); 
-            color: var(--text-main);
-            margin: 0; 
-            padding: 0; 
-            transition: background-color var(--transition-speed), color var(--transition-speed);
-        }
+        a { color: inherit; }
 
-        
-        .main-header {
-        
-            background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
-            color: #ffffff; 
-            position: relative;
-            padding-bottom: 80px; 
-        }
+        .mono { font-family: 'IBM Plex Mono', monospace; }
 
+        /* ---------- NAVBAR ---------- */
         .navbar {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            background-color: transparent; 
+            align-items: flex-end;
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 28px 24px 0 24px;
+            gap: 20px;
         }
 
         .nav-brand {
@@ -67,578 +58,613 @@
             align-items: center;
             gap: 12px;
             text-decoration: none;
+            padding-bottom: 14px;
         }
 
         .nav-brand-icon {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
-            border-radius: 8px;
+            width: 34px;
+            height: 34px;
+            background: var(--ink);
+            color: var(--paper);
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 600;
+            font-size: 0.8em;
             display: flex;
-            justify-content: center;
             align-items: center;
-            color: white;
-            font-weight: 700;
-            font-size: 1.2em;
+            justify-content: center;
+            border-radius: 4px;
         }
 
         .nav-brand-text {
-            color: #ffffff;
-            font-size: 1.4em;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.15em;
+            font-weight: 600;
+            letter-spacing: -0.2px;
         }
 
-        .nav-links {
+        .nav-tabs {
             list-style: none;
             display: flex;
-            gap: 35px;
             margin: 0;
             padding: 0;
+            gap: 4px;
+            flex-wrap: wrap;
         }
 
-        .nav-links li a {
+        .nav-tabs li a {
+            display: block;
             text-decoration: none;
-            color: #cbd5e1;
-            font-size: 0.95em;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.78em;
             font-weight: 500;
-            transition: color var(--transition-speed);
+            letter-spacing: 0.02em;
+            color: var(--ink-muted);
+            padding: 10px 18px;
+            border: 1px solid var(--line);
+            border-bottom: none;
+            border-radius: 6px 6px 0 0;
+            background: rgba(255,255,255,0.4);
+            transition: background-color 0.15s, color 0.15s;
         }
 
-        .nav-links li a:hover, 
-        .nav-links li a.active {
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+        .nav-tabs li a.active {
+            background: var(--paper-alt);
+            color: var(--ink);
+            border-color: var(--line);
+            box-shadow: 0 -1px 0 var(--paper-alt);
         }
 
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .theme-toggle {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #ffffff;
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 0.85em;
-            transition: all var(--transition-speed);
-        }
-
-        .theme-toggle:hover {
-            background: rgba(255, 255, 255, 0.2);
+        .nav-tabs li a:not(.active):hover {
+            background: rgba(255,255,255,0.7);
+            color: var(--ink);
         }
 
         .btn-contact {
-            background-color: transparent;
-            border: 1px solid #ffffff;
-            color: white;
             text-decoration: none;
-            padding: 9px 24px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 0.9em;
-            transition: all var(--transition-speed);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.78em;
+            font-weight: 500;
+            color: var(--paper);
+            background: var(--ink);
+            padding: 10px 20px;
+            border-radius: 6px;
+            white-space: nowrap;
+            margin-bottom: 14px;
+            transition: background-color 0.15s;
         }
 
-        .btn-contact:hover {
-            background-color: #ffffff;
-            color: #0f172a;
-        }
+        .btn-contact:hover { background: var(--teal); }
 
-
+        /* ---------- HERO ---------- */
         .hero-container {
-            max-width: 1200px;
+            max-width: 1180px;
             margin: 0 auto;
-            padding: 60px 20px 40px 20px;
+            background: var(--paper-alt);
+            border: 1px solid var(--line);
+            border-radius: 0 10px 10px 10px;
+            padding: 56px 48px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 48px;
+            box-shadow: var(--shadow);
         }
 
-        .hero-content {
-            flex: 1;
-            max-width: 55%;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5em; 
-            margin-top: 0;
-            margin-bottom: 20px;
-            line-height: 1.1;
-            letter-spacing: -1.5px;
-            color: #ffffff;
-        }
-
-        .hero-content p {
-            font-size: 1.15em;
-            color: #94a3b8;
-            margin-bottom: 40px;
-            line-height: 1.6;
-        }
-
-        .btn-hero {
-            background-color: var(--accent-color);
-            color: white;
-            text-decoration: none;
-            padding: 14px 32px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1.05em;
-            transition: background-color var(--transition-speed);
+        .formula-bar {
             display: inline-flex;
             align-items: center;
             gap: 10px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.78em;
+            color: var(--teal);
+            background: var(--teal-soft);
+            border: 1px solid var(--teal);
+            padding: 7px 14px;
+            border-radius: 4px;
+            margin-bottom: 22px;
         }
 
-        .btn-hero:hover {
-            background-color: var(--accent-hover);
+        .formula-bar .fx { font-weight: 600; opacity: 0.7; }
+
+        .hero-content { flex: 1.1; }
+
+        .hero-content h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.7em;
+            font-weight: 700;
+            line-height: 1.12;
+            letter-spacing: -0.5px;
+            margin: 0 0 20px 0;
+            color: var(--ink);
         }
 
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
+        .hero-content p {
+            font-size: 1.03em;
+            color: var(--ink-muted);
+            line-height: 1.7;
+            margin-bottom: 16px;
+            max-width: 46ch;
+        }
+
+        .btn-hero {
+            display: inline-flex;
             align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            background: var(--gold);
+            color: #241a06;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            padding: 13px 26px;
+            border-radius: 6px;
+            transition: background-color 0.15s, transform 0.15s;
         }
 
-        .hero-image img {
-            max-width: 100%;
-            height: auto;
-            max-height: 280px;
-            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.4));
-            transition: transform 0.3s ease;
-        }
+        .btn-hero:hover { background: #b47a24; transform: translateY(-1px); }
 
-        .hero-image img:hover {
-            transform: scale(1.03);
-        }
+        /* ---------- HERO MOCKUP SVG ---------- */
+        .hero-visual { flex: 1; display: flex; justify-content: center; }
+        .hero-visual svg { width: 100%; max-width: 340px; height: auto; }
 
-      
-        .feature-bar-wrapper {
-            max-width: 1100px;
+        /* ---------- STATUS BAR ---------- */
+        .status-bar-wrapper {
+            max-width: 1180px;
             margin: 0 auto;
-            padding: 0 20px;
-            transform: translateY(50%); 
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 10;
+            padding: 0 0;
         }
 
-        .feature-bar {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 100px;
-            padding: 20px 40px;
+        .status-bar {
+            background: var(--ink);
+            border-radius: 0 0 10px 10px;
             display: flex;
             justify-content: space-between;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            padding: 0 8px;
         }
 
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            color: #ffffff;
-        }
-
-        .feature-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.2em;
-        }
-
-        .feature-text h4 {
-            margin: 0;
-            font-size: 0.95em;
-            font-weight: 600;
-        }
-
-        .feature-text p {
-            margin: 3px 0 0 0;
-            font-size: 0.8em;
-            color: #94a3b8;
-        }
-
-    
-        .feature-item:not(:last-child)::after {
-            content: '';
-            display: block;
-            width: 1px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            margin-left: 30px;
-        }
-
-
-       
-        .content-container { 
-            max-width: 1200px; 
-            margin: 80px auto 0 auto; 
-            padding: 60px 20px;
-        }
-
-        .project-card { 
-            background: var(--card-bg); 
-            padding: 40px; 
-            margin-bottom: 40px; 
-            border-radius: 16px; 
-            border: 1px solid var(--card-border);
-            box-shadow: var(--card-shadow); 
-            transition: transform 0.2s, background-color var(--transition-speed), border var(--transition-speed);
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .project-title {
-            color: var(--text-main);
-            font-size: 1.8em;
-            margin-top: 0;
-            margin-bottom: 15px;
+        .status-item {
+            flex: 1;
             display: flex;
             align-items: center;
             gap: 10px;
+            padding: 16px 20px;
+            border-right: 1px solid rgba(255,255,255,0.1);
         }
 
-        .project-title::before {
-            content: "";
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            background-color: var(--accent-color);
-            border-radius: 50%;
+        .status-item:last-child { border-right: none; }
+
+        .status-swatch {
+            width: 9px;
+            height: 9px;
+            border-radius: 2px;
+            flex-shrink: 0;
         }
 
-        .project-card > p:not(.tech-tags) {
-            color: var(--text-muted);
-            line-height: 1.7;
-            font-size: 1.05em;
-            margin-bottom: 25px;
+        .status-text h4 {
+            margin: 0;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.74em;
+            font-weight: 500;
+            color: var(--paper);
+            letter-spacing: 0.02em;
         }
 
-        .tech-tags {
-            margin-bottom: 20px;
+        .status-text p {
+            margin: 3px 0 0 0;
+            font-size: 0.72em;
+            color: #9aa1ab;
         }
+
+        /* ---------- MAIN CONTENT ---------- */
+        .content-container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 70px 24px 40px 24px;
+        }
+
+        .section-eyebrow {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.78em;
+            color: var(--teal);
+            letter-spacing: 0.06em;
+            margin: 0 0 6px 0;
+        }
+
+        .section-heading {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.9em;
+            font-weight: 700;
+            margin: 0 0 40px 0;
+            letter-spacing: -0.3px;
+        }
+
+        .project-card {
+            background: var(--paper-alt);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            margin-bottom: 28px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 18px 28px;
+            background: #faf9f5;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .project-id {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8em;
+            font-weight: 600;
+            color: var(--teal);
+            background: var(--teal-soft);
+            border: 1px solid var(--teal);
+            padding: 4px 9px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .project-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.32em;
+            font-weight: 600;
+            margin: 0;
+            letter-spacing: -0.2px;
+        }
+
+        .project-body { padding: 28px; }
+
+        .tech-tags { margin-bottom: 18px; display: flex; flex-wrap: wrap; gap: 8px; }
 
         .tech-tag {
-            background-color: var(--tag-bg);
-            padding: 6px 12px;
-            border-radius: 6px;
+            font-family: 'IBM Plex Mono', monospace;
+            background-color: var(--gold-soft);
+            border: 1px solid var(--gold);
+            padding: 5px 11px;
+            border-radius: 4px;
+            font-size: 0.76em;
+            font-weight: 500;
+            color: #6b4a12;
+        }
+
+        .project-body > p {
+            color: var(--ink-muted);
+            line-height: 1.75;
+            font-size: 1em;
+            margin: 0 0 22px 0;
+        }
+
+        iframe {
+            width: 100%;
+            height: 650px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background-color: #f1efe9;
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 30px 20px 50px 20px;
+            color: var(--ink-muted);
             font-size: 0.85em;
-            font-weight: 600;
-            color: var(--tag-text);
-            margin-right: 8px;
-            margin-bottom: 8px;
-            display: inline-block;
-            transition: all var(--transition-speed);
         }
 
-        iframe { 
-            width: 100%; 
-            height: 650px; 
-            border: none; 
-            border-radius: 12px;
-            background-color: #1e293b; 
-        }
+        footer p { margin: 4px 0; }
 
-
+        /* ---------- RESPONSIVE ---------- */
         @media (max-width: 992px) {
-            .hero-container {
-                flex-direction: column;
-                text-align: center;
-                padding: 40px 20px 80px 20px;
-            }
-            .hero-content {
-                max-width: 100%;
-            }
-            .hero-content h1 {
-                font-size: 2.8em;
-            }
-            .hero-image {
-                margin-top: 40px;
-                justify-content: center;
-            }
-            .feature-bar {
-                flex-direction: column;
-                border-radius: 24px;
-                gap: 20px;
-                padding: 30px;
-            }
-            .feature-item:not(:last-child)::after {
-                display: none;
-            }
-            .content-container {
-                margin-top: 150px;
-            }
+            .hero-container { flex-direction: column; text-align: left; padding: 40px 28px; border-radius: 0 10px 10px 10px; }
+            .hero-content p { max-width: 100%; }
+            .hero-visual { order: -1; margin-bottom: 8px; }
+            .hero-visual svg { max-width: 260px; }
+            .status-bar { flex-wrap: wrap; }
+            .status-item { flex: 1 1 50%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                gap: 20px;
-            }
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-            }
-            iframe { height: 450px; }
-            .project-card { padding: 25px; }
+            .navbar { flex-direction: column; align-items: flex-start; gap: 14px; padding-top: 20px; }
+            .nav-tabs { order: 3; }
+            .btn-contact { margin-bottom: 0; }
+            .hero-content h1 { font-size: 2em; }
+            iframe { height: 420px; }
+            .project-body { padding: 20px; }
+            .project-header { padding: 14px 20px; }
+            .status-item { flex: 1 1 100%; }
         }
     </style>
 </head>
 <body>
 
+    <nav class="navbar">
+        <a href="#" class="nav-brand">
+            <div class="nav-brand-icon">DM</div>
+            <span class="nav-brand-text">Darlan Monteiro</span>
+        </a>
 
-    <header class="main-header">
-        
-      
-        <nav class="navbar">
-            <a href="#" class="nav-brand">
-                <div class="nav-brand-icon">DM</div>
-                <span class="nav-brand-text">Darlan Monteiro</span>
-            </a>
+        <ul class="nav-tabs">
+            <li><a href="#" class="active">Power BI</a></li>
+            <li><a href="#">Tableau</a></li>
+            <li><a href="#">Looker</a></li>
+            <li><a href="#">Excel</a></li>
+            <li><a href="#">Python</a></li>
+        </ul>
 
-            <ul class="nav-links">
-                <li><a href="#" class="active">Power BI</a></li>
-                <li><a href="#">Tableau</a></li>
-                <li><a href="#">Looker</a></li>
-                <li><a href="#">Excel</a></li>
-                <li><a href="#">Python</a></li>
-            </ul>
+        <a href="https://www.linkedin.com/in/darlan-santos-01a87b185/" target="_blank" class="btn-contact">Contato →</a>
+    </nav>
 
-            <div class="nav-actions">
-                <button class="theme-toggle" id="btn-toggle" onclick="toggleTheme()">☀️ Modo Claro</button>
-                <a href="https://www.linkedin.com/in/darlan-santos-01a87b185/" target="_blank" class="btn-contact">Contato</a>
-            </div>
-        </nav>
-
-     
+    <header>
         <div class="hero-container">
             <div class="hero-content">
+                <div class="formula-bar"><span class="fx">fx</span> =CONSOLIDAR(Dados; Modelagem; Insights)</div>
                 <h1>Projetado para transformar dados hoje e amanhã</h1>
                 <p>Nesta página, você encontra meus projetos práticos desenvolvidos em Power BI. O objetivo é demonstrar a extração, modelagem e visualização de dados complexos para gerar insights precisos e apoiar a tomada de decisão estratégica dos negócios.</p>
-                <p>Explore os dashboards e descubra como a análise de dados pode impulsionar resultados reais.</p>
-                <a href="#projetos" class="btn-hero">
-                    Explorar Dashboards &rarr;
-                </a>
+                <p>Explore os dashboards abaixo e veja como a análise de dados pode impulsionar resultados reais.</p>
+                <a href="#projetos" class="btn-hero">Explorar dashboards →</a>
             </div>
-            <div class="hero-image">
-                <!-- imagem do Power BI -->
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Logo Power BI">
+            <div class="hero-visual">
+                <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="4" y="4" width="312" height="252" rx="10" fill="#ffffff" stroke="#dcd7c9"/>
+                    <rect x="4" y="4" width="312" height="34" rx="10" fill="#faf9f5" stroke="#dcd7c9"/>
+                    <circle cx="24" cy="21" r="4" fill="#c98a2b"/>
+                    <circle cx="40" cy="21" r="4" fill="#1d6c74"/>
+                    <circle cx="56" cy="21" r="4" fill="#dcd7c9"/>
+                    <text x="290" y="25" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10" fill="#5c6472">R01</text>
+
+                    <!-- bars -->
+                    <rect x="28" y="150" width="26" height="70" rx="2" fill="#f1e3c6" stroke="#c98a2b"/>
+                    <rect x="64" y="120" width="26" height="100" rx="2" fill="#c98a2b"/>
+                    <rect x="100" y="160" width="26" height="60" rx="2" fill="#f1e3c6" stroke="#c98a2b"/>
+                    <rect x="136" y="95" width="26" height="125" rx="2" fill="#c98a2b"/>
+
+                    <!-- line series -->
+                    <polyline points="30,110 66,90 102,100 138,60 174,75" fill="none" stroke="#1d6c74" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="174" cy="75" r="4" fill="#1d6c74"/>
+
+                    <!-- KPI card -->
+                    <rect x="196" y="56" width="100" height="164" rx="8" fill="#dbeae9" stroke="#1d6c74"/>
+                    <text x="212" y="82" font-family="IBM Plex Mono, monospace" font-size="9" fill="#1d6c74">TICKET MÉDIO</text>
+                    <text x="212" y="112" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="26" fill="#12181f">R$42,8k</text>
+                    <text x="212" y="130" font-family="IBM Plex Mono, monospace" font-size="9" fill="#1d6c74">▲ 12,4%</text>
+
+                    <rect x="212" y="150" width="68" height="7" rx="3" fill="#c9dedd"/>
+                    <rect x="212" y="150" width="46" height="7" rx="3" fill="#1d6c74"/>
+                    <rect x="212" y="168" width="68" height="7" rx="3" fill="#c9dedd"/>
+                    <rect x="212" y="168" width="30" height="7" rx="3" fill="#1d6c74"/>
+                    <rect x="212" y="186" width="68" height="7" rx="3" fill="#c9dedd"/>
+                    <rect x="212" y="186" width="58" height="7" rx="3" fill="#1d6c74"/>
+
+                    <line x1="16" y1="230" x2="304" y2="230" stroke="#dcd7c9" stroke-width="1"/>
+                </svg>
             </div>
         </div>
 
-        <!-- Barra Flutuante -->
-        <div class="feature-bar-wrapper">
-            <div class="feature-bar">
-                <div class="feature-item">
-                    <div class="feature-icon">📊</div>
-                    <div class="feature-text">
-                        <h4>Modelagem de Dados</h4>
-                        <p>Star Schema & DAX</p>
-                    </div>
+        <div class="status-bar-wrapper">
+            <div class="status-bar">
+                <div class="status-item">
+                    <div class="status-swatch" style="background:#c98a2b;"></div>
+                    <div class="status-text"><h4>Modelagem de dados</h4><p>Star Schema &amp; DAX</p></div>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon">⚙️</div>
-                    <div class="feature-text">
-                        <h4>ETL Automatizado</h4>
-                        <p>Power Query & Scripts</p>
-                    </div>
+                <div class="status-item">
+                    <div class="status-swatch" style="background:#1d6c74;"></div>
+                    <div class="status-text"><h4>ETL automatizado</h4><p>Power Query &amp; Python</p></div>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon">💡</div>
-                    <div class="feature-text">
-                        <h4>Insights Estratégicos</h4>
-                        <p>Apoio à Decisão</p>
-                    </div>
+                <div class="status-item">
+                    <div class="status-swatch" style="background:#c98a2b;"></div>
+                    <div class="status-text"><h4>Insights estratégicos</h4><p>Apoio à decisão</p></div>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🎨</div>
-                    <div class="feature-text">
-                        <h4>Design & UI/UX</h4>
-                        <p>Telas Interativas</p>
-                    </div>
+                <div class="status-item">
+                    <div class="status-swatch" style="background:#1d6c74;"></div>
+                    <div class="status-text"><h4>Design &amp; UI/UX</h4><p>Telas interativas</p></div>
                 </div>
             </div>
         </div>
-
     </header>
 
-
     <main class="content-container" id="projetos">
-        
-        <!-- 1. Análise Financeira: Fluxo de Caixa Corporativo -->
+        <p class="section-eyebrow">CATÁLOGO DE RELATÓRIOS</p>
+        <h2 class="section-heading">Dashboards &amp; estudos de caso</h2>
+
+        <!-- 1 -->
         <div class="project-card">
-            <h2 class="project-title">Análise Financeira: Fluxo de Caixa Corporativo</h2>
-            <div class="tech-tags">
-                <span class="tech-tag">Power BI</span>
-                <span class="tech-tag">DAX (Parâmetros de Campo)</span>
-                <span class="tech-tag">Modelagem Financeira</span>
-                <span class="tech-tag">UI/UX</span>
+            <div class="project-header">
+                <span class="project-id mono">R01</span>
+                <h3 class="project-title">Análise Financeira: Fluxo de Caixa Corporativo</h3>
             </div>
-            <p>Painel executivo focado no controle de Fluxo de Caixa e monitoramento da saúde financeira do negócio. A modelagem classifica e consolida transações de Recebimentos e Pagamentos para apurar o Saldo Líquido real da operação ao longo do tempo. O projeto inclui o uso avançado de DAX com Parâmetros de Campo (Field Parameters), garantindo interatividade dinâmica para a diretoria cruzar dados bancários e formas de pagamento em um único visual, apoiando a tomada de decisão estratégica.</p>
-            <iframe title="Análise Financeira: 2020 - 2021" src="https://app.powerbi.com/view?r=eyJrIjoiYjhiMjI1YzQtYjY3Yi00MzEwLTlhNzMtNjJlMTQ5YTJlZjVjIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
+            <div class="project-body">
+                <div class="tech-tags">
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">DAX (Parâmetros de Campo)</span>
+                    <span class="tech-tag">Modelagem Financeira</span>
+                    <span class="tech-tag">UI/UX</span>
+                </div>
+                <p>Painel executivo focado no controle de Fluxo de Caixa e monitoramento da saúde financeira do negócio. A modelagem classifica e consolida transações de Recebimentos e Pagamentos para apurar o Saldo Líquido real da operação ao longo do tempo. O projeto inclui o uso avançado de DAX com Parâmetros de Campo (Field Parameters), garantindo interatividade dinâmica para a diretoria cruzar dados bancários e formas de pagamento em um único visual, apoiando a tomada de decisão estratégica.</p>
+                <iframe title="Análise Financeira: 2020 - 2021" src="https://app.powerbi.com/view?r=eyJrIjoiYjhiMjI1YzQtYjY3Yi00MzEwLTlhNzMtNjJlMTQ5YTJlZjVjIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
+            </div>
         </div>
 
-        <!-- 2. Performance Comercial: Varejo de Chocolates -->
+        <!-- 2 -->
         <div class="project-card">
-            <h2 class="project-title">Performance Comercial: Varejo de Chocolates</h2>
-            <div class="tech-tags">
-                <span class="tech-tag">Power BI</span>
-                <span class="tech-tag">Power Query (Delimitadores)</span>
-                <span class="tech-tag">DAX</span>
-                <span class="tech-tag">Figma (UI/UX)</span>
+            <div class="project-header">
+                <span class="project-id mono">R02</span>
+                <h3 class="project-title">Performance Comercial: Varejo de Chocolates</h3>
             </div>
-            <p>Painel executivo focado na análise do mix de produtos e volume de vendas. A modelagem cruza o faturamento bruto com a quantidade física de caixas enviadas para apurar o Ticket Médio real da operação. O projeto inclui extração e limpeza de dados via delimitadores de texto, além de um ranking de performance individual da equipe comercial para apoiar a tomada de decisão estratégica.</p>
-            <iframe title="Performance Comercial: Varejo de Chocolates" src="https://app.powerbi.com/view?r=eyJrIjoiZGQzMWE4Y2EtYWQ4MC00ZjMwLWJiNzUtYjBhYzE1MzFjMDUwIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
+            <div class="project-body">
+                <div class="tech-tags">
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">Power Query (Delimitadores)</span>
+                    <span class="tech-tag">DAX</span>
+                    <span class="tech-tag">Figma (UI/UX)</span>
+                </div>
+                <p>Painel executivo focado na análise do mix de produtos e volume de vendas. A modelagem cruza o faturamento bruto com a quantidade física de caixas enviadas para apurar o Ticket Médio real da operação. O projeto inclui extração e limpeza de dados via delimitadores de texto, além de um ranking de performance individual da equipe comercial para apoiar a tomada de decisão estratégica.</p>
+                <iframe title="Performance Comercial: Varejo de Chocolates" src="https://app.powerbi.com/view?r=eyJrIjoiZGQzMWE4Y2EtYWQ4MC00ZjMwLWJiNzUtYjBhYzE1MzFjMDUwIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
+            </div>
         </div>
 
-        <!-- 3. Performance Analytics: O Esquadrão Brasileiro -->
+        <!-- 3 -->
         <div class="project-card">
-            <h2 class="project-title">Performance Analytics: O Esquadrão Brasileiro</h2>
-            <div class="tech-tags">
-                <span class="tech-tag">Power BI</span>
-                <span class="tech-tag">Python (Web Scraping & Pandas)</span>
-                <span class="tech-tag">Engenharia de Dados</span>
-                <span class="tech-tag">Figma (UI/UX)</span>
+            <div class="project-header">
+                <span class="project-id mono">R03</span>
+                <h3 class="project-title">Performance Analytics: O Esquadrão Brasileiro</h3>
             </div>
-            <p>Painel de Scout de Elite focado no monitoramento tático dos 55 atletas da pré-lista da Seleção. Utiliza um pipeline automatizado em Python para extrair estatísticas do FBref, estruturando os dados para análise de métricas avançadas por 90 minutos (P90), disponibilidade física e entrega ofensiva do plantel definitivo.</p>
-            <iframe title="Performance Analytics: Seleção Brasileira" src="https://app.powerbi.com/view?r=eyJrIjoiNmJiYjEzZjAtNmE2ZS00Njk0LWFhNGYtN2VhYzVkODUwZGYwIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
+            <div class="project-body">
+                <div class="tech-tags">
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">Python (Web Scraping &amp; Pandas)</span>
+                    <span class="tech-tag">Engenharia de Dados</span>
+                    <span class="tech-tag">Figma (UI/UX)</span>
+                </div>
+                <p>Painel de Scout de Elite focado no monitoramento tático dos 55 atletas da pré-lista da Seleção. Utiliza um pipeline automatizado em Python para extrair estatísticas do FBref, estruturando os dados para análise de métricas avançadas por 90 minutos (P90), disponibilidade física e entrega ofensiva do plantel definitivo.</p>
+                <iframe title="Performance Analytics: Seleção Brasileira" src="https://app.powerbi.com/view?r=eyJrIjoiNmJiYjEzZjAtNmE2ZS00Njk0LWFhNGYtN2VhYzVkODUwZGYwIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
+            </div>
         </div>
 
-        <!-- 4. Analytics Executivo: Vendas & CRM -->
+        <!-- 4 -->
         <div class="project-card">
-            <h2 class="project-title">Analytics Executivo: Vendas & CRM (Mobilidade)</h2>
-            <div class="tech-tags">
-                <span class="tech-tag">Power BI</span>
-                <span class="tech-tag">ETL & Star Schema</span>
-                <span class="tech-tag">DAX Avançado</span>
-                <span class="tech-tag">Figma (UI/UX)</span>
+            <div class="project-header">
+                <span class="project-id mono">R04</span>
+                <h3 class="project-title">Analytics Executivo: Vendas &amp; CRM (Mobilidade)</h3>
             </div>
-            <p>Projeto focado em entender o comportamento de compra de passageiros, digitalização de canais e o retorno financeiro de campanhas. A modelagem cruzou vendas e cupons para o cálculo da Receita Líquida Real, gerando insights estratégicos sobre permissão de contato (Opt-in) no WhatsApp e migração de clientes do balcão para o aplicativo.</p>
-            <iframe title="Dashboard de Vendas e CRM" src="https://app.powerbi.com/view?r=eyJrIjoiNmYzNmFjMDUtMmE1ZC00NjliLWExNzUtZmQ0NDBjMDJkYzJhIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
+            <div class="project-body">
+                <div class="tech-tags">
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">ETL &amp; Star Schema</span>
+                    <span class="tech-tag">DAX Avançado</span>
+                    <span class="tech-tag">Figma (UI/UX)</span>
+                </div>
+                <p>Projeto focado em entender o comportamento de compra de passageiros, digitalização de canais e o retorno financeiro de campanhas. A modelagem cruzou vendas e cupons para o cálculo da Receita Líquida Real, gerando insights estratégicos sobre permissão de contato (Opt-in) no WhatsApp e migração de clientes do balcão para o aplicativo.</p>
+                <iframe title="Dashboard de Vendas e CRM" src="https://app.powerbi.com/view?r=eyJrIjoiNmYzNmFjMDUtMmE1ZC00NjliLWExNzUtZmQ0NDBjMDJkYzJhIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
+            </div>
         </div>
 
-        <!-- 5. O Dossiê do Penta -->
+        <!-- 5 -->
         <div class="project-card">
-            <h2 class="project-title">O Dossiê do Penta: A História do Brasil nas Copas</h2>
-            <div class="tech-tags">
-                <span class="tech-tag">Power BI</span>
-                <span class="tech-tag">Python (ETL & Pandas)</span>
-                <span class="tech-tag">Figma (UI/UX Design)</span>
+            <div class="project-header">
+                <span class="project-id mono">R05</span>
+                <h3 class="project-title">O Dossiê do Penta: A História do Brasil nas Copas</h3>
             </div>
-            <p>Análise tática e histórica das 5 campanhas campeãs mundiais da Seleção Brasileira (1958, 1962, 1970, 1994 e 2002), com extração, limpeza e modelagem de dados automatizadas via scripts em Python.</p>
-            <iframe title="O Dossiê do Penta" src="https://app.powerbi.com/view?r=eyJrIjoiOTEzNTkwNmMtNGVjZC00YmNjLTkwMjAtMjhiMzZiNDY2Y2RiIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
+            <div class="project-body">
+                <div class="tech-tags">
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">Python (ETL &amp; Pandas)</span>
+                    <span class="tech-tag">Figma (UI/UX Design)</span>
+                </div>
+                <p>Análise tática e histórica das 5 campanhas campeãs mundiais da Seleção Brasileira (1958, 1962, 1970, 1994 e 2002), com extração, limpeza e modelagem de dados automatizadas via scripts em Python.</p>
+                <iframe title="O Dossiê do Penta" src="https://app.powerbi.com/view?r=eyJrIjoiOTEzNTkwNmMtNGVjZC00YmNjLTkwMjAtMjhiMzZiNDY2Y2RiIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
+            </div>
         </div>
 
-        <!-- 6. Analytics Esportivo: Brasileirão 2025 -->
+        <!-- 6 -->
         <div class="project-card">
-            <h2 class="project-title">Analytics Esportivo: Brasileirão 2025 (Flamengo)</h2>
-            <div class="tech-tags">
-                <span class="tech-tag">Power BI</span>
-                <span class="tech-tag">Python (Web Scraping)</span>
-                <span class="tech-tag">HTML/CSS (Visual Personalizado)</span>
+            <div class="project-header">
+                <span class="project-id mono">R06</span>
+                <h3 class="project-title">Analytics Esportivo: Brasileirão 2025 (Flamengo)</h3>
             </div>
-            <p>Monitoramento de performance da equipe, utilizando Python para coleta de dados e Power BI para visualização tática e estatística.</p>
-            <iframe title="Brasilierão 2025" src="https://app.powerbi.com/view?r=eyJrIjoiNmMwZWE2YzMtYTE0OS00ZjAxLThkY2ItM2YxYTJjODM1YjIxIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
+            <div class="project-body">
+                <div class="tech-tags">
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">Python (Web Scraping)</span>
+                    <span class="tech-tag">HTML/CSS (Visual Personalizado)</span>
+                </div>
+                <p>Monitoramento de performance da equipe, utilizando Python para coleta de dados e Power BI para visualização tática e estatística.</p>
+                <iframe title="Brasilierão 2025" src="https://app.powerbi.com/view?r=eyJrIjoiNmMwZWE2YzMtYTE0OS00ZjAxLThkY2ItM2YxYTJjODM1YjIxIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
+            </div>
         </div>
 
-        <!-- 7. Case Técnico: Análise de Clientes -->
+        <!-- 7 -->
         <div class="project-card">
-            <h2 class="project-title">Case Técnico: Análise de Clientes</h2>
-            <div class="tech-tags">
-                <span class="tech-tag">Power BI</span>
-                <span class="tech-tag">ETL & Modelagem</span>
-                <span class="tech-tag">Análise Financeira</span>
+            <div class="project-header">
+                <span class="project-id mono">R07</span>
+                <h3 class="project-title">Case Técnico: Análise de Clientes</h3>
             </div>
-            <p>Dashboard focado em segmentação de clientes e análise de volume transacional para tomada de decisão estratégica.</p>
-            <iframe title="Desempenho dos Grupos de Clientes" src="https://app.powerbi.com/view?r=eyJrIjoiNmI5MjA1MDYtNjQ2NS00Y2JjLWFlZDgtOTgwODhmNTIyMTA4IiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
+            <div class="project-body">
+                <div class="tech-tags">
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">ETL &amp; Modelagem</span>
+                    <span class="tech-tag">Análise Financeira</span>
+                </div>
+                <p>Dashboard focado em segmentação de clientes e análise de volume transacional para tomada de decisão estratégica.</p>
+                <iframe title="Desempenho dos Grupos de Clientes" src="https://app.powerbi.com/view?r=eyJrIjoiNmI5MjA1MDYtNjQ2NS00Y2JjLWFlZDgtOTgwODhmNTIyMTA4IiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
+            </div>
         </div>
 
-        <!-- 8. O Brasileirão (2007 a 2019) -->
+        <!-- 8 -->
         <div class="project-card">
-            <h2 class="project-title">O Brasileirão na ótica dos dados (2007 a 2019)</h2>
-            <div class="tech-tags">
-                <span class="tech-tag">Power BI</span>
-                <span class="tech-tag">ETL & Modelagem</span>
-                <span class="tech-tag">HTML/CSS/Figma (Visual Personalizado)</span>
+            <div class="project-header">
+                <span class="project-id mono">R08</span>
+                <h3 class="project-title">O Brasileirão na ótica dos dados (2007 a 2019)</h3>
             </div>
-            <p>Dashboard focado em análise de desempenho dos times e estatísticas do campeonato brasileiro entre 2007 e 2019.</p>
-            <iframe title="BRASILEIRÃO (2007 a 2019)" src="https://app.powerbi.com/view?r=eyJrIjoiZWUwZWE1YzctMmM5OS00YjNjLWI2NjUtNmQyMjI0M2YyYzEzIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
+            <div class="project-body">
+                <div class="tech-tags">
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">ETL &amp; Modelagem</span>
+                    <span class="tech-tag">HTML/CSS/Figma (Visual Personalizado)</span>
+                </div>
+                <p>Dashboard focado em análise de desempenho dos times e estatísticas do campeonato brasileiro entre 2007 e 2019.</p>
+                <iframe title="BRASILEIRÃO (2007 a 2019)" src="https://app.powerbi.com/view?r=eyJrIjoiZWUwZWE1YzctMmM5OS00YjNjLWI2NjUtNmQyMjI0M2YyYzEzIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
+            </div>
         </div>
 
-        <!-- 9. F1 - Fórmula 1 2021 A 2024 -->
+        <!-- 9 -->
         <div class="project-card">
-            <h2 class="project-title">F1 - Fórmula 1 2021 A 2024</h2>
-            <div class="tech-tags">
-                <span class="tech-tag">Power BI</span>
-                <span class="tech-tag">ETL & Modelagem</span>
-                <span class="tech-tag">HTML/CSS/Figma (Visual Personalizado)</span>
+            <div class="project-header">
+                <span class="project-id mono">R09</span>
+                <h3 class="project-title">F1 — Fórmula 1 2021 a 2024</h3>
             </div>
-            <p>Dashboard focado em análise das estatísticas e desempenho dos pilotos e equipes da Fórmula 1 entre 2021 e 2024.</p>
-            <iframe title="F1 - Fórmula 1 2021 A 2024" src="https://app.powerbi.com/view?r=eyJrIjoiOTdmYzEzZGItOGQwZC00MWFlLThmY2ItNjRmM2RlNmM0ZTRlIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
+            <div class="project-body">
+                <div class="tech-tags">
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">ETL &amp; Modelagem</span>
+                    <span class="tech-tag">HTML/CSS/Figma (Visual Personalizado)</span>
+                </div>
+                <p>Dashboard focado em análise das estatísticas e desempenho dos pilotos e equipes da Fórmula 1 entre 2021 e 2024.</p>
+                <iframe title="F1 - Fórmula 1 2021 A 2024" src="https://app.powerbi.com/view?r=eyJrIjoiOTdmYzEzZGItOGQwZC00MWFlLThmY2ItNjRmM2RlNmM0ZTRlIiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
+            </div>
         </div>
 
-        <!-- 10. Vendas de Eletrônicos -->
+        <!-- 10 -->
         <div class="project-card">
-            <h2 class="project-title">Vendas de Eletrônicos</h2>
-            <div class="tech-tags">
-                <span class="tech-tag">Power BI</span>
-                <span class="tech-tag">ETL & Modelagem</span>
-                <span class="tech-tag">HTML/CSS/Figma (Visual Personalizado)</span>
+            <div class="project-header">
+                <span class="project-id mono">R10</span>
+                <h3 class="project-title">Vendas de Eletrônicos</h3>
             </div>
-            <p>Dashboard focado em análise das vendas de eletrônicos.</p>
-            <iframe title="Vendas de Eletrônicos" src="https://app.powerbi.com/view?r=eyJrIjoiM2JjMWY3YTUtYjI5OC00YTkxLWJjZTUtYTJhM2M0NTkxYmE0IiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
+            <div class="project-body">
+                <div class="tech-tags">
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">ETL &amp; Modelagem</span>
+                    <span class="tech-tag">HTML/CSS/Figma (Visual Personalizado)</span>
+                </div>
+                <p>Dashboard focado em análise das vendas de eletrônicos.</p>
+                <iframe title="Vendas de Eletrônicos" src="https://app.powerbi.com/view?r=eyJrIjoiM2JjMWY3YTUtYjI5OC00YTkxLWJjZTUtYTJhM2M0NTkxYmE0IiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
+            </div>
         </div>
 
-        <!-- 11. Dashboard de Vendas -->
+        <!-- 11 -->
         <div class="project-card">
-            <h2 class="project-title">Dashboard de Vendas</h2>
-            <div class="tech-tags">
-                <span class="tech-tag">Power BI</span>
-                <span class="tech-tag">ETL & Modelagem</span>
-                <span class="tech-tag">HTML/CSS/Figma (Visual Personalizado)</span>
+            <div class="project-header">
+                <span class="project-id mono">R11</span>
+                <h3 class="project-title">Dashboard de Vendas</h3>
             </div>
-            <p>Dashboard focado em análise geral das vendas.</p>
-            <iframe title="Dashboard de Vendas" src="https://app.powerbi.com/view?r=eyJrIjoiN2U3OTQ3YTAtNmY5My00ZTFkLWJjZTEtOWE0OWZmYzNjNTU2IiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
+            <div class="project-body">
+                <div class="tech-tags">
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">ETL &amp; Modelagem</span>
+                    <span class="tech-tag">HTML/CSS/Figma (Visual Personalizado)</span>
+                </div>
+                <p>Dashboard focado em análise geral das vendas.</p>
+                <iframe title="Dashboard de Vendas" src="https://app.powerbi.com/view?r=eyJrIjoiN2U3OTQ3YTAtNmY5My00ZTFkLWJjZTEtOWE0OWZmYzNjNTU2IiwidCI6IjY1OWNlMmI4LTA3MTQtNDE5OC04YzM4LWRjOWI2MGFhYmI1NyJ9" allowFullScreen="true"></iframe>
+            </div>
         </div>
- 
-        <footer style="text-align: center; margin-top: 50px; color: var(--text-muted); padding-bottom: 30px;">
-            <p>&copy; 2026 - Todos os direitos reservados</p>
+
+        <footer>
+            <p>© 2026 — Todos os direitos reservados</p>
             <p>Desenvolvido por: Darlan Monteiro</p>
         </footer>
-
     </main>
 
-
-    <script>
-        function toggleTheme() {
-            document.body.classList.toggle('light-mode');
-            
-            const btn = document.getElementById('btn-toggle');
-            if (document.body.classList.contains('light-mode')) {
-                btn.innerHTML = '🌙 Modo Escuro';
-            } else {
-                btn.innerHTML = '☀️ Modo Claro';
-            }
-        }
-    </script>
 </body>
 </html>
-
