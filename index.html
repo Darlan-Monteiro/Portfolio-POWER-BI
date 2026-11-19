@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Darlan Monteiro | Analista de Dados & Power BI</title>
 <meta name="description" content="Portfólio de Darlan Monteiro: dashboards em Power BI com ETL em Python, SQL Server, DAX e interfaces desenhadas no Figma.">
-<meta name="theme-color" content="#F2C811">
+<meta name="theme-color" content="#F6DE6E">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23F2C811'/%3E%3Crect x='7' y='16' width='5' height='9' rx='1.5' fill='%232a2208'/%3E%3Crect x='14' y='11' width='5' height='14' rx='1.5' fill='%232a2208'/%3E%3Crect x='21' y='6' width='5' height='19' rx='1.5' fill='%232a2208'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,23 +18,25 @@ document.documentElement.dataset.theme=d;document.documentElement.dataset.mode=m
 </script>
 <style>
 :root{
-  --y1:#FFE066; --y2:#F2C811; --y3:#F29B00;
-  --grad:linear-gradient(135deg,var(--y1),var(--y2) 50%,var(--y3));
-  --on-y:#2a2208;
-  --bg:#fff4c7; --bg-2:#ffe08a;
-  --ink:#2a2208; --muted:#6a5a22;
-  --glass:rgba(255,255,255,.42); --glass-edge:rgba(255,255,255,.75); --glass-low:rgba(150,110,0,.18);
-  --shadow:0 10px 40px rgba(160,110,0,.18);
-  --orb1:#F2C811; --orb2:#FF9F1C; --orb3:#FFF1A8;
+  --y1:#FFF4B8; --y2:#F6DE6E; --y3:#E4BE2A;
+  --grad:linear-gradient(135deg,var(--y1),var(--y2) 55%,var(--y3));
+  --on-y:#111111;
+  --bg:#ffffff; --bg-2:#fffbe6;
+  --ink:#0a0a0a; --muted:#1c1a10;
+  --glass:rgba(255,255,255,.55); --glass-edge:rgba(255,255,255,.9); --glass-low:rgba(120,100,0,.14);
+  --shadow:0 10px 36px rgba(120,100,0,.12);
+  --glow:rgba(228,190,42,.35);
+  --orb1:#FFEFA0; --orb2:#FFF7CC; --orb3:#F6DE6E;
   --r:28px; --ease:cubic-bezier(.22,.8,.3,1);
   color-scheme:light;
 }
 [data-theme="dark"]{
-  --bg:#100d05; --bg-2:#241b05;
-  --ink:#fdf5d8; --muted:#cdbb7c;
-  --glass:rgba(255,255,255,.07); --glass-edge:rgba(255,255,255,.22); --glass-low:rgba(0,0,0,.45);
-  --shadow:0 14px 50px rgba(0,0,0,.55);
-  --orb1:#d9a900; --orb2:#c2570a; --orb3:#6b4b00;
+  --bg:#000000; --bg-2:#0c0a02;
+  --ink:#ffffff; --muted:#f4f1e4;
+  --glass:rgba(255,255,255,.07); --glass-edge:rgba(255,255,255,.2); --glass-low:rgba(0,0,0,.5);
+  --shadow:0 14px 50px rgba(0,0,0,.7);
+  --glow:rgba(246,222,110,.28);
+  --orb1:#7a6410; --orb2:#4d3f08; --orb3:#a38a1c;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -48,10 +50,10 @@ a{color:inherit}
 
 /* fundo: orbes de luz que o vidro desfoca */
 .orbs{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
-.orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.75;will-change:transform}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;will-change:transform}
 .o1{width:46vmax;height:46vmax;background:var(--orb1);top:-14vmax;left:-10vmax;animation:drift 26s ease-in-out infinite alternate}
 .o2{width:38vmax;height:38vmax;background:var(--orb2);bottom:-14vmax;right:-8vmax;animation:drift 32s ease-in-out infinite alternate-reverse}
-.o3{width:28vmax;height:28vmax;background:var(--orb3);top:40%;left:45%;opacity:.5;animation:drift 38s ease-in-out infinite alternate}
+.o3{width:28vmax;height:28vmax;background:var(--orb3);top:40%;left:45%;opacity:.28;animation:drift 38s ease-in-out infinite alternate}
 @keyframes drift{to{transform:translate3d(8vmax,5vmax,0) scale(1.12)}}
 
 /* vidro líquido */
@@ -70,7 +72,7 @@ a{color:inherit}
   display:flex;align-items:center;gap:14px;padding:8px 10px 8px 14px;border-radius:999px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:'Bricolage Grotesque';font-weight:700}
 .logo{width:34px;height:34px;border-radius:11px;background:var(--grad);display:grid;place-items:center;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 4px 12px rgba(242,155,0,.4)}
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 4px 12px var(--glow)}
 .logo svg{width:20px;height:20px}
 .links{display:flex;gap:2px;margin:0 auto}
 .links a{text-decoration:none;padding:8px 16px;border-radius:999px;font-weight:500;font-size:.95rem;color:var(--muted);transition:background .2s,color .2s}
@@ -85,9 +87,9 @@ a{color:inherit}
 .theme{--i:0;position:relative;display:flex;padding:3px;border-radius:999px;background:var(--glass-low);box-shadow:inset 0 1px 3px rgba(0,0,0,.18)}
 [data-mode="light"] .theme{--i:0}[data-mode="dark"] .theme{--i:1}[data-mode="auto"] .theme{--i:2}
 .theme::before{content:"";position:absolute;top:3px;left:3px;width:34px;height:34px;border-radius:50%;
-  background:var(--grad);box-shadow:0 2px 10px rgba(242,155,0,.55),inset 0 1px 0 rgba(255,255,255,.8);
+  background:var(--grad);box-shadow:0 2px 10px var(--glow),inset 0 1px 0 rgba(255,255,255,.8);
   transform:translateX(calc(var(--i)*34px));transition:transform .45s var(--ease)}
-.theme button{position:relative;width:34px;height:34px;border:0;background:none;border-radius:50%;cursor:pointer;display:grid;place-items:center;color:var(--ink);opacity:.7;transition:opacity .2s}
+.theme button{position:relative;width:34px;height:34px;border:0;background:none;border-radius:50%;cursor:pointer;display:grid;place-items:center;color:var(--ink);opacity:.85;transition:opacity .2s}
 .theme button[aria-pressed="true"]{opacity:1;color:var(--on-y)}
 
 /* hero */
@@ -102,8 +104,8 @@ h1{font-size:clamp(2.5rem,6vw,4.6rem);font-weight:800}
 .cta{display:flex;gap:12px;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;font-weight:600;text-decoration:none;font-size:1rem;transition:transform .25s var(--ease),box-shadow .25s}
 .btn:hover{transform:translateY(-2px)}
-.btn.primary{background:var(--grad);color:var(--on-y);box-shadow:0 8px 24px rgba(242,155,0,.45),inset 0 1.5px 0 rgba(255,255,255,.75)}
-.btn.primary:hover{box-shadow:0 12px 32px rgba(242,155,0,.6),inset 0 1.5px 0 rgba(255,255,255,.75)}
+.btn.primary{background:var(--grad);color:var(--on-y);box-shadow:0 8px 24px var(--glow),inset 0 1.5px 0 rgba(255,255,255,.75)}
+.btn.primary:hover{box-shadow:0 12px 32px var(--glow),inset 0 1.5px 0 rgba(255,255,255,.75)}
 .btn.ghost{color:var(--ink)}
 .btn svg{width:18px;height:18px}
 
@@ -132,7 +134,7 @@ h1{font-size:clamp(2.5rem,6vw,4.6rem);font-weight:800}
 .chip{border:0;cursor:pointer;font:inherit;font-weight:500;font-size:.92rem;color:var(--ink);padding:9px 18px;border-radius:999px;
   background:var(--glass);box-shadow:inset 0 0 0 1px var(--glass-edge);transition:background .25s,transform .25s var(--ease)}
 .chip:hover{transform:translateY(-2px)}
-.chip[aria-pressed="true"]{background:var(--grad);color:var(--on-y);box-shadow:0 6px 18px rgba(242,155,0,.4),inset 0 1px 0 rgba(255,255,255,.7)}
+.chip[aria-pressed="true"]{background:var(--grad);color:var(--on-y);box-shadow:0 6px 18px var(--glow),inset 0 1px 0 rgba(255,255,255,.7)}
 .list{display:grid;gap:28px;padding-bottom:30px}
 .card{border-radius:var(--r);padding:26px 26px 18px;content-visibility:auto;contain-intrinsic-size:auto 820px}
 .card[hidden]{display:none}
@@ -147,7 +149,7 @@ h1{font-size:clamp(2.5rem,6vw,4.6rem);font-weight:800}
 .frame{position:relative;margin-top:18px;padding:10px;border-radius:calc(var(--r) - 6px);background:var(--glass);
   box-shadow:inset 0 0 0 1px var(--glass-edge),inset 0 2px 0 var(--glass-edge),0 6px 24px var(--glass-low)}
 .frame iframe,.skeleton{display:block;width:100%;aspect-ratio:16/9;min-height:260px;border:0;border-radius:calc(var(--r) - 14px);background:rgba(255,255,255,.5)}
-[data-theme="dark"] .frame iframe{background:#1a1608}
+[data-theme="dark"] .frame iframe{background:#0b0b0b}
 .skeleton{position:absolute;inset:10px;width:auto;display:grid;place-items:center;color:var(--muted);font-size:.9rem;
   background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.4) 50%,transparent 70%) 0 0/250% 100%,var(--glass);animation:shine 1.8s infinite linear;pointer-events:none;transition:opacity .4s}
 .frame.ready .skeleton{opacity:0;visibility:hidden}
@@ -226,10 +228,10 @@ footer{padding:0 0 40px;text-align:center;color:var(--muted);font-size:.9rem}
     <div class="kpis"><div class="kpi"><small>Receita líquida</small><b>R$ 1,28 mi</b></div><div class="kpi"><small>Ticket médio</small><b>R$ 42,8 mil</b></div></div>
     <div class="chart">
       <svg viewBox="0 0 300 130">
-        <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE066"/><stop offset=".5" stop-color="#F2C811"/><stop offset="1" stop-color="#F29B00"/></linearGradient></defs>
+        <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF4B8"/><stop offset=".5" stop-color="#F6DE6E"/><stop offset="1" stop-color="#E4BE2A"/></linearGradient></defs>
         <g fill="url(#g)"><rect x="10" y="70" width="26" height="55" rx="6"/><rect x="50" y="45" width="26" height="80" rx="6"/><rect x="90" y="80" width="26" height="45" rx="6"/><rect x="130" y="25" width="26" height="100" rx="6"/><rect x="170" y="55" width="26" height="70" rx="6"/></g>
-        <polyline points="23,60 63,38 103,52 143,14 183,30 260,8" fill="none" stroke="currentColor" stroke-width="2.500" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
-        <circle cx="260" cy="8" r="5" fill="#F29B00"/>
+        <polyline points="23,60 63,38 103,52 143,14 183,30 260,8" fill="none" stroke="currentColor" stroke-width="2.500" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="260" cy="8" r="5" fill="#E4BE2A"/>
         <circle cx="240" cy="95" r="26" fill="none" stroke="currentColor" stroke-opacity=".15" stroke-width="12"/>
         <circle cx="240" cy="95" r="26" fill="none" stroke="url(#g)" stroke-width="12" stroke-dasharray="105 164" stroke-linecap="round" transform="rotate(-90 240 95)"/>
       </svg>
